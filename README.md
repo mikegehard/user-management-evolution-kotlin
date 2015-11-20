@@ -27,3 +27,9 @@ Use `./run-apps.sh` to run and `./stop-apps.sh` to stop.
 ## Windows users
 
 Substitute `gradlew.bat` for `./gradlew`.
+
+## Tags
+
+Tags will be used along the way to mark significant points in the evolution.
+
+running-java - A running Java application complete with tests.
