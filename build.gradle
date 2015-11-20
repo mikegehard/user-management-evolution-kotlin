@@ -1,0 +1,17 @@
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    test {
+        testLogging {
+            exceptionFormat "full"
+        }
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}

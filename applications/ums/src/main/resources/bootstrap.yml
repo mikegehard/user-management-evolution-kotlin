@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: user-management
+  cloud:
+    config:
+      uri: http://localhost:8888
+      failFast: true
