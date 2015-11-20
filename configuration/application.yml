@@ -1,0 +1,21 @@
+# The configurations in this file are shared across all applications.
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  # Allow the services to register more quickly in a demo environment.
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    hostname: localhost
+
+# Turns off security that Spring Cloud Services adds
+# when it pulls in Spring Security
+security:
+  basic:
+    enabled: false
+
+# Turn off security of management endpoints
+# for Spring Boot Actuator
+management:
+  security:
+    enabled: false
