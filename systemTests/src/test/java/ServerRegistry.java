@@ -9,9 +9,10 @@ public class ServerRegistry {
     private static final Map<String, ServerDetails> servers = new HashMap<>();
 
     public ServerRegistry() {
-        servers.put(BILLING, new ServerDetails("localhost:8081", "'counter.billing.reocurringPayment.created'"));
-        servers.put(EMAIL, new ServerDetails("localhost:8080", "'counter.emails.sent'"));
-        servers.put(UMS, new ServerDetails("localhost:8082", "'counter.ums.subscription.created'"));
+        servers.put(BILLING, new ServerDetails(BILLING, "localhost:8081", "'counter.billing.reocurringPayment.created'"));
+        servers.put(EMAIL, new ServerDetails(EMAIL, "localhost:8080", "'counter.emails.sent'"));
+        servers.put(UMS, new ServerDetails(UMS, "localhost:8082", "'counter.ums.subscription.created'"));
+
     }
 
     public ServerDetails get(String server) {

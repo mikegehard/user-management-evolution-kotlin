@@ -1,5 +1,3 @@
-apply plugin: 'java'
-
 repositories {
     mavenCentral()
 }
@@ -10,8 +8,9 @@ dependencies {
     testCompile 'com.jayway.restassured:rest-assured:2.6.0'
 }
 
-//test {
-//    testLogging {
-//        showStandardStreams = true
-//    }
-//}
+test {
+    testLogging {
+        exceptionFormat "full"
+        showStandardStreams = true
+    }
+}

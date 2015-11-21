@@ -1,12 +1,6 @@
 allprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
-
-    test {
-        testLogging {
-            exceptionFormat "full"
-        }
-    }
 }
 
 sourceCompatibility = 1.8
