@@ -22,7 +22,7 @@ Use `./run-apps.sh` to run and `./stop-apps.sh` to stop.
 
 1. Run the platform services
 1. Run the applications
-1. Run the tests with `./gradlew systemTests:test`
+1. Run the tests
 
 ## Windows users
 
