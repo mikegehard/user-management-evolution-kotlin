@@ -11,5 +11,5 @@ script:
   - ./start.sh
   # Wait for all of the services to come up
   # TODO: is there a more graceful way to do this?
-  - sleep 3m
+  - sleep 5m
   - ./run-tests.sh
