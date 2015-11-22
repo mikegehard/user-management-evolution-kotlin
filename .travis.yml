@@ -1,7 +1,12 @@
 language: java
+jdk:
+  - oraclejdk8
 services:
   - rabbitmq
 
+# The start script will take care of installing what it needs
+# when it runs the apps.
+install: true
 script:
   - ./start.sh
   # Wait for all of the services to come up
