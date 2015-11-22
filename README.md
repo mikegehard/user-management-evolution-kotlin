@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mikegehard/user-management-evolution-kotlin.svg)](https://travis-ci.org/mikegehard/user-management-evolution-kotlin)
+
 # Migration From Java to Kotlin
 
 ## Background
