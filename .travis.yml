@@ -9,7 +9,7 @@ services:
 install: true
 script:
   - ./start.sh
-  - tail -f logs/*
+  - tail -f logs/* &
   # Wait for all of the services to come up
   # TODO: is there a more graceful way to do this?
   - sleep 5m
