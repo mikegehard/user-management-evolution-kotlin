@@ -8,6 +8,7 @@ services:
 # when it runs the apps.
 install: true
 script:
+  - ./build-platform.sh
   - ./start.sh
   - tail -f logs/* &
   # Wait for all of the services to come up
