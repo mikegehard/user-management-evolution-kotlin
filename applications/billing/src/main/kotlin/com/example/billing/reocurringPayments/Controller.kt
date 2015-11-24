@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class Controller {
     @Autowired
-    private var paymentGateway: com.example.payments.Gateway? = null
+    private lateinit var paymentGateway: com.example.payments.Gateway
 
     @Autowired
-    private var counter: CounterService? = null
+    private lateinit var counter: CounterService
 
     @Autowired
-    private var service: Service? = null
+    private lateinit var service: Service
 
     @RequestMapping(value = "/reocurringPayment", method = arrayOf(RequestMethod.POST))
     fun createReocurringPayment(@RequestBody data: Map<String, Any>): ResponseEntity<String> {
         val responseHeaders = HttpHeaders()
         responseHeaders.add("content-type", MediaType.APPLICATION_JSON.toString())
 
-        service!!.thisMayFail()
+        service.thisMayFail()
 
         val response: ResponseEntity<String>
-        if (paymentGateway!!.createReocurringPayment(data["amount"] as Int)) {
-            counter!!.increment("billing.reocurringPayment.created")
+        if (paymentGateway.createReocurringPayment(data["amount"] as Int)) {
+            counter.increment("billing.reocurringPayment.created")
             response = ResponseEntity("{\"errors\": []}", responseHeaders, HttpStatus.CREATED)
         } else {
             response = ResponseEntity("{\"errors\": [\"error1\", \"error2\"]}", responseHeaders, HttpStatus.BAD_REQUEST)
