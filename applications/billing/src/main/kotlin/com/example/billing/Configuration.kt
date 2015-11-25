@@ -13,14 +13,10 @@ open class Configuration {
     @Bean
     // This method must be overrideable (not overrideable is the default in Kotlin)
     // or Spring Boot is not happy.
-    open fun paymentGateway(): Gateway {
-        return RecurlyGateway()
-    }
+    open fun paymentGateway(): Gateway = RecurlyGateway()
 
     @Bean
     // This method must be overrideable (not overrideable is the default in Kotlin)
     // or Spring Boot is not happy.
-    open fun serviceThatMayFail(): Service {
-        return Service()
-    }
+    open fun serviceThatMayFail(): Service = Service()
 }
