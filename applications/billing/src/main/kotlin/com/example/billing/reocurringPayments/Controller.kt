@@ -30,8 +30,9 @@ class Controller {
 
     @RequestMapping(value = "/reocurringPayment", method = arrayOf(RequestMethod.POST))
     fun createReocurringPayment(@RequestBody data: Map<String, Any>): ResponseEntity<String> {
-        val responseHeaders = HttpHeaders()
-        responseHeaders.add("content-type", MediaType.APPLICATION_JSON.toString())
+        val responseHeaders = HttpHeaders().apply {
+            add("content-type", MediaType.APPLICATION_JSON_VALUE)
+        }
 
         service.thisMayFail()
 
