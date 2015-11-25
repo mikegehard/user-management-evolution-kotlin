@@ -1,6 +1,6 @@
 package com.example.billing.reocurringPayments
 
-import org.springframework.beans.factory.annotation.Autowired
+import com.example.payments.Gateway
 import org.springframework.boot.actuate.metrics.CounterService
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
@@ -10,17 +10,23 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
+import javax.inject.Inject
 
 @RestController
 class Controller {
-    @Autowired
-    private lateinit var paymentGateway: com.example.payments.Gateway
+    private val paymentGateway: com.example.payments.Gateway
 
-    @Autowired
-    private lateinit var counter: CounterService
+    private val counter: CounterService
 
-    @Autowired
-    private lateinit var service: Service
+    private val service: Service
+
+
+    @Inject
+    constructor(paymentGateway: Gateway, counterService: CounterService, service: Service) {
+        this.paymentGateway = paymentGateway
+        this.counter = counterService
+        this.service = service
+    }
 
     @RequestMapping(value = "/reocurringPayment", method = arrayOf(RequestMethod.POST))
     fun createReocurringPayment(@RequestBody data: Map<String, Any>): ResponseEntity<String> {
