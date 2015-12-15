@@ -36,12 +36,13 @@ class Controller {
 
         service.thisMayFail()
 
-        val response: ResponseEntity<String>
-        if (paymentGateway.createReocurringPayment(data["amount"] as Int)) {
+        val createSuccessful = paymentGateway.createReocurringPayment(data["amount"] as Int)
+
+        val response = if (createSuccessful) {
             counter.increment("billing.reocurringPayment.created")
-            response = ResponseEntity("{\"errors\": []}", responseHeaders, HttpStatus.CREATED)
+            ResponseEntity("{\"errors\": []}", responseHeaders, HttpStatus.CREATED)
         } else {
-            response = ResponseEntity("{\"errors\": [\"error1\", \"error2\"]}", responseHeaders, HttpStatus.BAD_REQUEST)
+            ResponseEntity("{\"errors\": [\"error1\", \"error2\"]}", responseHeaders, HttpStatus.BAD_REQUEST)
         }
 
         return response
