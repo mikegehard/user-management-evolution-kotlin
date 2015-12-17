@@ -21,10 +21,6 @@ springBoot {
     mainClass = 'com.example.billing.Application'
 }
 
-sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-}
-
 jar {
     baseName = 'billing'
     version = '0.0.1-SNAPSHOT'
