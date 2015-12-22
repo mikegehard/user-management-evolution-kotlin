@@ -19,6 +19,7 @@ apply plugin: 'io.spring.dependency-management'
 
 springBoot {
     mainClass = 'com.example.billing.Application'
+//    mainClass = 'com.example.billing.ApplicationKt'
 }
 
 jar {

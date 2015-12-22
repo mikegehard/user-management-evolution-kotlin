@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan
 @ComponentScan
 @EnableDiscoveryClient
 @EnableCircuitBreaker
+
 class Application {
     companion object {
         @JvmStatic fun main(args: Array<String>) {
@@ -18,3 +19,8 @@ class Application {
     }
 }
 
+//class Application
+//
+//fun main(args: Array<String>) {
+//    SpringApplication.run(Application::class.java, *args)
+//}
