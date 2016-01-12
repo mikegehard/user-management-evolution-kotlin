@@ -6,5 +6,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/mikegehard/user-management-evolution-kotlin
+          uri: file://${user.home}/workspace/learning/kotlin/user-management-evolution-kotlin
           searchPaths: configuration

@@ -11,6 +11,7 @@ application to a Kotlin/SpringBoot application.
 ### Prerequisites
 
 * RabbitMQ must be running.
+* Change platform/configServer/src/main/resources/application.yml to point to the right directory.
 
 ### Running the platform services
 
