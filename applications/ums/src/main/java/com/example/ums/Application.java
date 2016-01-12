@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -39,8 +38,8 @@ public class Application implements CommandLineRunner {
     @Autowired
     Client billingclient;
 
-    @Value("${emailQueueName}")
-    String emailQueueName;
+    @Autowired
+    EmailConfiguration emailConfiguration;
 
     @Autowired
     RabbitTemplate rabbitTemplate;
@@ -65,6 +64,6 @@ public class Application implements CommandLineRunner {
 
     @Bean
     public SendEmail emailSender() {
-        return new SendEmail(emailQueueName, rabbitTemplate);
+        return new SendEmail(emailConfiguration.getQueue(), rabbitTemplate);
     }
 }
