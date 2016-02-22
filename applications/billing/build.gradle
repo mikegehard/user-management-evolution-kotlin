@@ -17,11 +17,6 @@ apply plugin: 'spring-boot'
 apply plugin: 'kotlin'
 apply plugin: 'io.spring.dependency-management'
 
-springBoot {
-    mainClass = 'com.example.billing.Application'
-//    mainClass = 'com.example.billing.ApplicationKt'
-}
-
 jar {
     baseName = 'billing'
     version = '0.0.1-SNAPSHOT'
