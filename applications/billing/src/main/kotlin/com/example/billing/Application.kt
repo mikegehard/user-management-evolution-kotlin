@@ -11,16 +11,16 @@ import org.springframework.context.annotation.ComponentScan
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 
-class Application {
-    companion object {
-        @JvmStatic fun main(args: Array<String>) {
-            SpringApplication.run(Application::class.java, *args)
-        }
-    }
-}
-
-//class Application
-//
-//fun main(args: Array<String>) {
-//    SpringApplication.run(Application::class.java, *args)
+//class Application {
+//    companion object {
+//        @JvmStatic fun main(args: Array<String>) {
+//            SpringApplication.run(Application::class.java, *args)
+//        }
+//    }
 //}
+
+class Application
+
+fun main(args: Array<String>) {
+    SpringApplication.run(Application::class.java, *args)
+}
