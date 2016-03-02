@@ -5,10 +5,12 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 apply plugin: 'spring-boot'
+apply plugin: 'kotlin'
 apply plugin: 'io.spring.dependency-management'
 
 jar {
@@ -38,4 +40,5 @@ dependencies {
     compile("org.springframework.cloud:spring-cloud-starter-config")
     compile("org.springframework.cloud:spring-cloud-starter-eureka")
     compile("com.h2database:h2")
+    compile("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
 }
