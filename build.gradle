@@ -1,6 +1,10 @@
 allprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
+    buildscript {
+        ext.kotlin_version = '1.0.0'
+        ext.springBootVersion = '1.3.0.RELEASE'
+    }
 }
 
 sourceCompatibility = 1.8
