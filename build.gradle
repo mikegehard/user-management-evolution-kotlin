@@ -5,6 +5,22 @@ allprojects {
         ext.kotlin_version = '1.0.0'
         ext.springBootVersion = '1.3.3.RELEASE'
     }
+
+    buildscript {
+        repositories {
+            mavenCentral()
+            maven {
+                url 'http://repo.spring.io/libs-snapshot'
+            }
+        }
+    }
+
+    repositories {
+        mavenCentral()
+        maven {
+            url 'http://repo.spring.io/libs-snapshot'
+        }
+    }
 }
 
 sourceCompatibility = 1.8

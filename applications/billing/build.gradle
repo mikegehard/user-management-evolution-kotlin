@@ -18,13 +18,6 @@ jar {
     version = '0.0.1-SNAPSHOT'
 }
 
-repositories {
-    mavenCentral()
-    maven {
-        url 'http://repo.spring.io/milestone'
-    }
-}
-
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-starter-parent:Brixton.M3"

@@ -1,7 +1,4 @@
 buildscript {
-    repositories {
-        mavenCentral()
-    }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE")
@@ -14,13 +11,6 @@ apply plugin: 'io.spring.dependency-management'
 jar {
     baseName = 'email'
     version = '0.0.1-SNAPSHOT'
-}
-
-repositories {
-    mavenCentral()
-    maven {
-        url 'http://repo.spring.io/milestone'
-    }
 }
 
 dependencyManagement {
