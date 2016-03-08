@@ -2,11 +2,13 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("io.spring.gradle:dependency-management-plugin:${dependencyMgmtPluginVersion}")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'kotlin'
 
 jar {
     baseName = 'email'
@@ -27,4 +29,5 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.cloud:spring-cloud-starter-config")
+    compile("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
 }
