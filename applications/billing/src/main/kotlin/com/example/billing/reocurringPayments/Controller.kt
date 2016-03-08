@@ -21,6 +21,7 @@ class Controller {
     private val service: Service
 
 
+    // Can't use a default constructor because you need to annotate the constructor for injection
     @Inject
     constructor(paymentGateway: Gateway, counterService: CounterService, service: Service) {
         this.paymentGateway = paymentGateway
