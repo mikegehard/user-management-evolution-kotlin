@@ -13,21 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 import javax.inject.Inject
 
 @RestController
-class Controller {
-    private val paymentGateway: com.example.payments.Gateway
-
-    private val counter: CounterService
-
-    private val service: Service
-
-
-    // Can't use a default constructor because you need to annotate the constructor for injection
-    @Inject
-    constructor(paymentGateway: Gateway, counterService: CounterService, service: Service) {
-        this.paymentGateway = paymentGateway
-        this.counter = counterService
-        this.service = service
-    }
+class Controller @Inject constructor(val paymentGateway: Gateway, val counter: CounterService, val service: Service) {
 
     @RequestMapping(value = "/reocurringPayment", method = arrayOf(RequestMethod.POST))
     fun createReocurringPayment(@RequestBody data: Map<String, Any>): ResponseEntity<String> {
