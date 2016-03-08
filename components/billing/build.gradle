@@ -1,4 +1,11 @@
 dependencies {
     compile("org.springframework.cloud:spring-cloud-starter-feign:1.1.0.M1")
     compile("org.springframework.cloud:spring-cloud-starter-hystrix:1.1.0.M1")
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
+buildscript {
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+apply plugin: 'kotlin'
