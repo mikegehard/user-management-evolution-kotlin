@@ -37,7 +37,7 @@ class SystemTest : Spec({
                     .body("{\"userId\": \"abc123\", \"packageId\": \"package123\"}")
                     // when is a keyword in Kotlin so you need the backtick
                     .`when`()
-                    .post(registry.get(ServerRegistry.UMS).getUrl() + "/subscriptions")
+                    .post(registry.get(ServerRegistry.UMS).url + "/subscriptions")
                     .then()
                     .statusCode(201)
                     .body("acknowledged", equalTo(true));
