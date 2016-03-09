@@ -10,7 +10,7 @@ class SystemTest : Spec({
     // can the describe be optional in this case where all I want is tests??
     describe("testing the billing service") {
         test {
-            val billingServer = registry.get(ServerRegistry.BILLING)
+            val billingServer = registry[ServerRegistry.BILLING]
             val billingInitialValue = billingServer.metricValue
 
             given()
@@ -30,22 +30,24 @@ class SystemTest : Spec({
         test {
             val apps = listOf(ServerRegistry.BILLING, ServerRegistry.EMAIL, ServerRegistry.UMS)
 
-            val initialValues = apps.fold(hashMapOf<String, Int>()) { acc, app -> acc.put(app, registry.get(app).metricValue); acc }
+            val initialValues = apps.fold(hashMapOf<String, Int>()) { acc, app -> acc.put(app, registry[app].metricValue); acc }
 
             given()
                     .contentType("application/json;charset=UTF-8")
                     .body("{\"userId\": \"abc123\", \"packageId\": \"package123\"}")
                     // when is a keyword in Kotlin so you need the backtick
                     .`when`()
-                    .post(registry.get(ServerRegistry.UMS).url + "/subscriptions")
+                    .post(registry[ServerRegistry.UMS].url + "/subscriptions")
                     .then()
                     .statusCode(201)
                     .body("acknowledged", equalTo(true));
 
-            val actual = apps.map { app -> entry(app, registry.get(app).metricValue) }
+            val actual = apps.map { app -> entry(app, registry[app].metricValue) }
 
+            // Casting to a typed array is a little wonky...can we clean it up???
             val expected = apps.map { app -> entry(app, initialValues.getOrElse(app) { 0 } + 1) }.toTypedArray()
 
+            // This is a little wonky...can we clean it up???
             assertThat(actual).containsOnly(*expected)
         }
     }
