@@ -1,11 +1,29 @@
+buildscript {
+    ext.kotlin_version = '1.0.0'
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+    repositories {
+        mavenCentral()
+    }
+}
+
 repositories {
+    flatDir {
+        dirs 'libs'
+    }
     mavenCentral()
 }
 
+apply plugin: 'kotlin'
+
 dependencies {
     testCompile("junit:junit:4.12")
-    testCompile("org.assertj:assertj-core:3.2.0")
     testCompile 'com.jayway.restassured:rest-assured:2.6.0'
+    testCompile("io.damo:kspec:1.0-SNAPSHOT")
+    testCompile('org.assertj:assertj-core:3.3.0')
+    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 test {
