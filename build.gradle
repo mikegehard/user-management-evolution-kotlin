@@ -9,6 +9,7 @@ allprojects {
 
     buildscript {
         repositories {
+            jcenter()
             mavenCentral()
             maven {
                 url 'http://repo.spring.io/libs-snapshot'
@@ -17,6 +18,7 @@ allprojects {
     }
 
     repositories {
+        jcenter()
         mavenCentral()
         maven {
             url 'http://repo.spring.io/libs-snapshot'

@@ -9,10 +9,9 @@ buildscript {
 }
 
 repositories {
-    flatDir {
-        dirs 'libs'
+    maven {
+        url  "http://dl.bintray.com/dam5s/maven"
     }
-    mavenCentral()
 }
 
 apply plugin: 'kotlin'
@@ -20,7 +19,7 @@ apply plugin: 'kotlin'
 dependencies {
     testCompile("junit:junit:4.12")
     testCompile 'com.jayway.restassured:rest-assured:2.6.0'
-    testCompile("io.damo:kspec:1.0-SNAPSHOT")
+    testCompile('io.damo.kspec:kspec:1.0.0')
     testCompile('org.assertj:assertj-core:3.3.0')
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
