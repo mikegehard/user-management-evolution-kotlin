@@ -12,6 +12,10 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 
 @Configuration
 open class BeanConfig {
+
+    // In Spring 4.3, you will be able to do constructor injection of these and it will clean
+    // up these declarations a bit.
+    // https://spring.io/blog/2016/03/04/core-container-refinements-in-spring-framework-4-3
     @Autowired
     lateinit private var datasource: NamedParameterJdbcTemplate
 
@@ -25,11 +29,11 @@ open class BeanConfig {
     lateinit private var rabbitTemplate: RabbitTemplate
 
     @Bean
-    open fun subscriptionRepository(): SubscriptionRepository = SubscriptionRepository(datasource)
+    open fun subscriptionRepository() = SubscriptionRepository(datasource)
 
     @Bean
-    open fun billingService(): Service = Service(billingclient)
+    open fun billingService() = Service(billingclient)
 
     @Bean
-    open fun emailSender(): SendEmail = SendEmail(emailConfiguration.queue, rabbitTemplate)
+    open fun emailSender() = SendEmail(emailConfiguration.queue, rabbitTemplate)
 }
