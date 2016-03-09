@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 import javax.inject.Inject
 
+
+// Can you use delegation here???
+//  https://youtu.be/mSg9kSYfeX0?t=22m35s
 @RestController
 class Controller @Inject constructor(val paymentGateway: Gateway, val counter: CounterService, val service: Service) {
 
