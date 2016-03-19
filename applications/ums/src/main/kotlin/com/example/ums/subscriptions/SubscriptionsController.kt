@@ -3,6 +3,7 @@ package com.example.ums.subscriptions
 import com.example.billing.Service
 import com.example.email.SendEmail
 import com.example.subscriptions.CreateSubscription
+import com.example.subscriptions.CreateSubscriptionResult
 import com.example.subscriptions.Subscription
 import com.example.subscriptions.SubscriptionRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -32,10 +33,16 @@ class SubscriptionsController @Autowired constructor(val subscriptions: Subscrip
             add("content-type", MediaType.APPLICATION_JSON.toString())
         }
 
-        CreateSubscription(billingService, emailSender, subscriptions).run(params["userId"], params["packageId"])
+        val result = CreateSubscription(billingService, emailSender, subscriptions)
+                .run(params["userId"] ?: "abc123", params["packageId"] ?: "abc123")
 
-        counter.increment("ums.subscription.created")
-
-        return ResponseEntity("{ \"acknowledged\": true }", responseHeaders, HttpStatus.CREATED)
+        return when (result) {
+            is CreateSubscriptionResult.Success -> {
+                counter.increment("ums.subscription.created")
+                return ResponseEntity("{ \"acknowledged\": true }", responseHeaders, HttpStatus.CREATED)
+            }
+            is CreateSubscriptionResult.Failure ->
+                return ResponseEntity("{ \"acknowledged\": false }", responseHeaders, HttpStatus.BAD_REQUEST)
+        }
     }
 }
