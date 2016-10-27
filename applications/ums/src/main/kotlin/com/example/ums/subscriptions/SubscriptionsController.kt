@@ -36,7 +36,7 @@ class SubscriptionsController @Autowired constructor(val subscriptions: Subscrip
         val result = CreateSubscription(billingService, emailSender, subscriptions)
                 .run(params["userId"] ?: "abc123", params["packageId"] ?: "abc123")
 
-        return when (result) {
+        when (result) {
             is CreateSubscriptionResult.Success -> {
                 counter.increment("ums.subscription.created")
                 return ResponseEntity("{ \"acknowledged\": true }", responseHeaders, HttpStatus.CREATED)
