@@ -36,13 +36,13 @@ class SubscriptionsController @Autowired constructor(val subscriptions: Subscrip
         val result = CreateSubscription(billingService, emailSender, subscriptions)
                 .run(params["userId"] ?: "abc123", params["packageId"] ?: "abc123")
 
-        when (result) {
+        return when (result) {
             is CreateSubscriptionResult.Success -> {
                 counter.increment("ums.subscription.created")
-                return ResponseEntity("{ \"acknowledged\": true }", responseHeaders, HttpStatus.CREATED)
+                ResponseEntity("{ \"acknowledged\": true }", responseHeaders, HttpStatus.CREATED)
             }
             is CreateSubscriptionResult.Failure ->
-                return ResponseEntity("{ \"acknowledged\": false }", responseHeaders, HttpStatus.BAD_REQUEST)
+                ResponseEntity("{ \"acknowledged\": false }", responseHeaders, HttpStatus.BAD_REQUEST)
         }
     }
 }
